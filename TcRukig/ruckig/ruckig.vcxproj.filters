@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{b05982e2-c949-4b68-8111-76dde6dd8ef9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0c89f0a2-a19e-4a10-8105-d206bcbb9d61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TMC Files">
+      <UniqueIdentifier>{478ce03c-8306-414f-b34b-2d355c62485c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ruckig source">
+      <UniqueIdentifier>{40204283-6ec4-4e98-bf18-57bde901e6fa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TcPch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ruckigInterfaces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ruckigServices.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TcPch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\ruckig\src\ruckig\brake.cpp">
+      <Filter>ruckig source</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\ruckig\src\ruckig\position_first_step1.cpp">
+      <Filter>ruckig source</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\ruckig\src\ruckig\position_first_step2.cpp">
+      <Filter>ruckig source</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\ruckig\src\ruckig\position_second_step1.cpp">
+      <Filter>ruckig source</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\ruckig\src\ruckig\position_second_step2.cpp">
+      <Filter>ruckig source</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\ruckig\src\ruckig\position_third_step1.cpp">
+      <Filter>ruckig source</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\ruckig\src\ruckig\position_third_step2.cpp">
+      <Filter>ruckig source</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\ruckig\src\ruckig\velocity_second_step1.cpp">
+      <Filter>ruckig source</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\ruckig\src\ruckig\velocity_second_step2.cpp">
+      <Filter>ruckig source</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\ruckig\src\ruckig\velocity_third_step1.cpp">
+      <Filter>ruckig source</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\ruckig\src\ruckig\velocity_third_step2.cpp">
+      <Filter>ruckig source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ruckig.tmc">
+      <Filter>TMC Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

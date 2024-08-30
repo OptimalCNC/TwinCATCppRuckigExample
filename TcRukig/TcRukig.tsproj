@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.56">
+	<Project ProjectGUID="{5F28D939-C54D-4570-B4F8-B6F87653D0D6}" TargetNetId="10.136.104.21.1.1" Target64Bit="true" ShowHideConfigurations="#x6">
+		<System>
+			<Settings MaxCpus="8">
+				<Cpu/>
+				<Cpu CpuId="1"/>
+				<Debugger Priority="61"/>
+			</Settings>
+			<Tasks>
+				<Task Id="2" Priority="1" CycleTime="100000" AmsPort="350" DisableFpExceptions="true" AdtTasks="true">
+					<Name>Task 2</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Cpp>
+			<Project GUID="{A5E608B4-4E8F-43D9-AFA2-CE51DF583C4A}" Name="Example" PrjFilePath="Example\Example.vcxproj" TmcFilePath="Example\Example.tmc">
+				<Instance Id="#x01010010" KeepUnrestoredLinks="2" ClassFactoryId="C++ Module Vendor|Example|0.0.0.1">
+					<Name>Example_Obj1 (Example)</Name>
+					<TmcDesc GUID="{B6ED1202-02B9-4014-9C60-93F5F8F88DA3}">
+						<Name>Example</Name>
+						<CLSID ClassFactory="Example">{B6ED1202-02B9-4014-9C60-93F5F8F88DA3}</CLSID>
+						<Licenses>
+							<License>
+								<LicenseId>{304D006A-8299-4560-AB79-438534B50288}</LicenseId>
+							</License>
+						</Licenses>
+						<InitSequence>PSO</InitSequence>
+						<Contexts>
+							<Context>
+								<Id>1</Id>
+								<ManualConfig>
+									<OTCID>#x02010020</OTCID>
+								</ManualConfig>
+								<Priority>1</Priority>
+								<CycleTime>10000000</CycleTime>
+							</Context>
+						</Contexts>
+						<Interfaces>
+							<Interface DisableCodeGeneration="true">
+								<Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+							</Interface>
+							<Interface>
+								<Type GUID="{03000010-0000-0000-E000-000000000064}">ITcCyclic</Type>
+							</Interface>
+							<Interface DisableCodeGeneration="true">
+								<Type GUID="{03000012-0000-0000-E000-000000000064}">ITcADI</Type>
+							</Interface>
+							<Interface DisableCodeGeneration="true">
+								<Type GUID="{03000018-0000-0000-E000-000000000064}">ITcWatchSource</Type>
+							</Interface>
+						</Interfaces>
+						<Parameters>
+							<Parameter HideParameter="true">
+								<Name>TraceLevelMax</Name>
+								<Comment><![CDATA[Controls the amount of log messages.]]></Comment>
+								<BitSize>32</BitSize>
+								<BaseType GUID="{8007AE3B-86BB-40F2-B385-EF87FCC239A4}">TcTraceLevel</BaseType>
+								<PTCID>#x03002103</PTCID>
+								<ContextId>1</ContextId>
+							</Parameter>
+							<Parameter OnlineParameter="true">
+								<Name>Tolerance</Name>
+								<BitSize>64</BitSize>
+								<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+								<Default>
+									<Value>0.000001</Value>
+								</Default>
+								<PTCID>#x00000001</PTCID>
+								<ContextId>1</ContextId>
+							</Parameter>
+						</Parameters>
+						<DataAreas>
+							<DataArea>
+								<AreaNo AreaType="InputDst">0</AreaNo>
+								<Name>Inputs</Name>
+								<ContextId>1</ContextId>
+								<ByteSize>4</ByteSize>
+								<Symbol>
+									<Name>ExampleId</Name>
+									<BitSize>32</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+									<BitOffs>0</BitOffs>
+								</Symbol>
+							</DataArea>
+							<DataArea>
+								<AreaNo AreaType="OutputSrc">1</AreaNo>
+								<Name>Outputs</Name>
+								<ContextId>1</ContextId>
+								<ByteSize>80</ByteSize>
+								<Symbol>
+									<Name>MotionOutput</Name>
+									<BitSize>448</BitSize>
+									<SubItem>
+										<Name>time</Name>
+										<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+										<BitSize>64</BitSize>
+										<BitOffs>0</BitOffs>
+									</SubItem>
+									<SubItem>
+										<Name>pos</Name>
+										<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+										<ArrayInfo>
+											<LBound>0</LBound>
+											<Elements>3</Elements>
+										</ArrayInfo>
+										<BitSize>192</BitSize>
+										<BitOffs>64</BitOffs>
+									</SubItem>
+									<SubItem>
+										<Name>vel</Name>
+										<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+										<ArrayInfo>
+											<LBound>0</LBound>
+											<Elements>3</Elements>
+										</ArrayInfo>
+										<BitSize>192</BitSize>
+										<BitOffs>256</BitOffs>
+									</SubItem>
+									<BitOffs>0</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>ExampleId</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000B}">ULINT</BaseType>
+									<BitOffs>448</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>SumDiff</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>512</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>EffectiveTolerance</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>576</BitOffs>
+								</Symbol>
+							</DataArea>
+						</DataAreas>
+						<InterfacePointers>
+							<InterfacePointer>
+								<PTCID>#x03002060</PTCID>
+								<Name>CyclicCaller</Name>
+								<Type GUID="{0300001E-0000-0000-E000-000000000064}">ITcCyclicCaller</Type>
+							</InterfacePointer>
+						</InterfacePointers>
+						<ParameterValues>
+							<Value>
+								<Name>TraceLevelMax</Name>
+								<EnumText>tlAlways</EnumText>
+							</Value>
+							<Value>
+								<Name>Tolerance</Name>
+								<Value>0.001</Value>
+							</Value>
+						</ParameterValues>
+						<InterfacePointerValues>
+							<Value>
+								<Name>CyclicCaller</Name>
+								<OTCID>#x02010020</OTCID>
+							</Value>
+						</InterfacePointerValues>
+					</TmcDesc>
+				</Instance>
+			</Project>
+			<Project GUID="{23378F3D-BD6E-4F7D-9ACF-A7044F1BD06A}" Name="ruckig" PrjFilePath="ruckig\ruckig.vcxproj" TmcFilePath="ruckig\ruckig.tmc"/>
+		</Cpp>
+	</Project>
+</TcSmProject>

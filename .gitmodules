@@ -1,0 +1,3 @@
+[submodule "TcRukig/ruckig/extern/ruckig"]
+	path = TcRukig/ruckig/extern/ruckig
+	url = https://github.com/huweiATgithub/ruckig
