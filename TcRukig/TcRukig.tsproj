@@ -1,5 +1,50 @@
 <?xml version="1.0"?>
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.56">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{8C991C59-73E7-4FE2-B3D2-9BB7E5CB841D}">State</Name>
+			<BitSize>256</BitSize>
+			<SubItem>
+				<Name>Time</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>0</BitOffs>
+				<Unit><![CDATA[ms]]></Unit>
+			</SubItem>
+			<SubItem>
+				<Name>Position</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>64</BitOffs>
+				<Unit><![CDATA[mm]]></Unit>
+			</SubItem>
+			<SubItem>
+				<Name>Velocity</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>128</BitOffs>
+				<Unit><![CDATA[mm/ms]]></Unit>
+			</SubItem>
+			<SubItem>
+				<Name>Acceleration</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>192</BitOffs>
+				<Unit><![CDATA[mm/ms^2]]></Unit>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{A77CB083-3D37-44DC-9C69-B482F613CBC1}"/>
+				<Hide GUID="{0828783A-8EA6-4900-BA9E-463E5677873F}"/>
+				<Hide GUID="{68C1F51E-C274-430B-A137-79D4E591127C}"/>
+				<Hide GUID="{8891A609-F295-466D-91D5-D52DDBB704BA}"/>
+				<Hide GUID="{B1B975B0-DD1B-4AD7-BB44-83C4C4447F1D}"/>
+				<Hide GUID="{B3230CA5-6289-4F29-B44E-9D6190946314}"/>
+				<Hide GUID="{FD81C13F-CA59-44C8-9658-CA0A9452DC27}"/>
+				<Hide GUID="{A7C3E665-AFBD-44D2-A7BA-39440C7CB1C4}"/>
+				<Hide GUID="{FD7153F5-D272-43FF-9EED-6F5D7BEDD9C4}"/>
+			</Hides>
+		</DataType>
+	</DataTypes>
 	<Project ProjectGUID="{5F28D939-C54D-4570-B4F8-B6F87653D0D6}" TargetNetId="10.136.104.21.1.1" Target64Bit="true" ShowHideConfigurations="#x6">
 		<System>
 			<Settings MaxCpus="8">
@@ -160,6 +205,170 @@
 							<Value>
 								<Name>CyclicCaller</Name>
 								<OTCID>#x02010020</OTCID>
+							</Value>
+						</InterfacePointerValues>
+					</TmcDesc>
+				</Instance>
+				<Instance Id="#x01010020" KeepUnrestoredLinks="2" ClassFactoryId="C++ Module Vendor|Example|0.0.0.1">
+					<Name>Example_Obj2 (Interpolator1D)</Name>
+					<TmcDesc GUID="{B26DD069-8B84-44EC-84FF-19158324CA1B}">
+						<Name>Interpolator1D</Name>
+						<CLSID ClassFactory="Example">{B26DD069-8B84-44EC-84FF-19158324CA1B}</CLSID>
+						<Licenses>
+							<License>
+								<LicenseId>{304D006A-8299-4560-AB79-438534B50288}</LicenseId>
+							</License>
+						</Licenses>
+						<InitSequence>PSO</InitSequence>
+						<Contexts>
+							<Context>
+								<Id>1</Id>
+								<ManualConfig>
+									<OTCID>#x02010020</OTCID>
+								</ManualConfig>
+								<Priority>1</Priority>
+								<CycleTime>10000000</CycleTime>
+							</Context>
+						</Contexts>
+						<Interfaces>
+							<Interface DisableCodeGeneration="true">
+								<Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+							</Interface>
+							<Interface>
+								<Type GUID="{03000010-0000-0000-E000-000000000064}">ITcCyclic</Type>
+							</Interface>
+							<Interface DisableCodeGeneration="true">
+								<Type GUID="{03000012-0000-0000-E000-000000000064}">ITcADI</Type>
+							</Interface>
+							<Interface DisableCodeGeneration="true">
+								<Type GUID="{03000018-0000-0000-E000-000000000064}">ITcWatchSource</Type>
+							</Interface>
+						</Interfaces>
+						<Parameters>
+							<Parameter HideParameter="true">
+								<Name>TraceLevelMax</Name>
+								<Comment><![CDATA[Controls the amount of log messages.]]></Comment>
+								<BitSize>32</BitSize>
+								<BaseType GUID="{8007AE3B-86BB-40F2-B385-EF87FCC239A4}">TcTraceLevel</BaseType>
+								<PTCID>#x03002103</PTCID>
+								<ContextId>1</ContextId>
+							</Parameter>
+							<Parameter ShowSubItems="true">
+								<Name>Parameter</Name>
+								<BitSize>192</BitSize>
+								<SubItem>
+									<Name>max_velocity</Name>
+									<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+									<BitSize>64</BitSize>
+									<BitOffs>0</BitOffs>
+								</SubItem>
+								<SubItem>
+									<Name>max_acceleration</Name>
+									<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+									<BitSize>64</BitSize>
+									<BitOffs>64</BitOffs>
+								</SubItem>
+								<SubItem>
+									<Name>max_jerk</Name>
+									<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+									<BitSize>64</BitSize>
+									<BitOffs>128</BitOffs>
+								</SubItem>
+								<PTCID>#x00000001</PTCID>
+								<ContextId>1</ContextId>
+							</Parameter>
+							<Parameter>
+								<Name>CycleTime</Name>
+								<Comment TxtId=""><![CDATA[Cycle time of task]]></Comment>
+								<BitSize>32</BitSize>
+								<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+								<PTCID>#x03002080</PTCID>
+								<ContextId>1</ContextId>
+							</Parameter>
+						</Parameters>
+						<DataAreas>
+							<DataArea>
+								<AreaNo AreaType="InputDst">0</AreaNo>
+								<Name>Inputs</Name>
+								<ContextId>1</ContextId>
+								<ByteSize>16</ByteSize>
+								<Symbol>
+									<Name>InitialPosition</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<Unit><![CDATA[mm]]></Unit>
+									<BitOffs>0</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>InitialVelocity</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<Unit><![CDATA[mm/ms]]></Unit>
+									<BitOffs>64</BitOffs>
+								</Symbol>
+							</DataArea>
+							<DataArea>
+								<AreaNo AreaType="OutputSrc">1</AreaNo>
+								<Name>Outputs</Name>
+								<ContextId>1</ContextId>
+								<ByteSize>64</ByteSize>
+								<Symbol>
+									<Name>PositionControlState</Name>
+									<BitSize>256</BitSize>
+									<BaseType GUID="{8C991C59-73E7-4FE2-B3D2-9BB7E5CB841D}">State</BaseType>
+									<BitOffs>0</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>VelocityControlState</Name>
+									<BitSize>256</BitSize>
+									<BaseType GUID="{8C991C59-73E7-4FE2-B3D2-9BB7E5CB841D}">State</BaseType>
+									<BitOffs>256</BitOffs>
+								</Symbol>
+							</DataArea>
+						</DataAreas>
+						<InterfacePointers>
+							<InterfacePointer>
+								<PTCID>#x03002060</PTCID>
+								<Name>CyclicCaller</Name>
+								<Type GUID="{0300001E-0000-0000-E000-000000000064}">ITcCyclicCaller</Type>
+							</InterfacePointer>
+							<InterfacePointer>
+								<PTCID>#x00000002</PTCID>
+								<Name>Task</Name>
+								<Type GUID="{02000002-0000-0000-E000-000000000064}">ITcTask</Type>
+								<ContextId>1</ContextId>
+							</InterfacePointer>
+						</InterfacePointers>
+						<ParameterValues>
+							<Value>
+								<Name>TraceLevelMax</Name>
+								<EnumText>tlAlways</EnumText>
+							</Value>
+							<Value>
+								<Name>Parameter.max_velocity</Name>
+								<Value>20</Value>
+							</Value>
+							<Value>
+								<Name>Parameter.max_acceleration</Name>
+								<Value>0.01</Value>
+							</Value>
+							<Value>
+								<Name>Parameter.max_jerk</Name>
+								<Value>0.0001</Value>
+							</Value>
+							<Value>
+								<Name>CycleTime</Name>
+								<Value>10000000</Value>
+							</Value>
+						</ParameterValues>
+						<InterfacePointerValues>
+							<Value>
+								<Name>CyclicCaller</Name>
+								<OTCID>#x02010020</OTCID>
+							</Value>
+							<Value>
+								<Name>Task</Name>
+								<OTCID>#x00000000</OTCID>
 							</Value>
 						</InterfacePointerValues>
 					</TmcDesc>

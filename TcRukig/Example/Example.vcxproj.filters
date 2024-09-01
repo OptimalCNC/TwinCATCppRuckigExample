@@ -54,6 +54,9 @@
     <ClInclude Include="eg05.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Interpolator1D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TcPch.cpp">
@@ -75,6 +78,9 @@
       <Filter>TwinCAT OS Files</Filter>
     </ClCompile>
     <ClCompile Include="Example.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Interpolator1D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

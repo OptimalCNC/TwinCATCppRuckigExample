@@ -3,7 +3,7 @@
   <Vendor>
     <Name>C++ Module Vendor</Name>
   </Vendor>
-  <DataTypes />
+  <DataTypes ><DataType><Name GUID="{8c991c59-73e7-4fe2-b3d2-9bb7e5cb841d}">State</Name><SubItem><Name>Time</Name><Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type><Unit><![CDATA[ms]]></Unit></SubItem><SubItem><Name>Position</Name><Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type><Unit><![CDATA[mm]]></Unit></SubItem><SubItem><Name>Velocity</Name><Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type><Unit><![CDATA[mm/ms]]></Unit></SubItem><SubItem><Name>Acceleration</Name><Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type><Unit><![CDATA[mm/ms^2]]></Unit></SubItem><Hides><Hide GUID="{a77cb083-3d37-44dc-9c69-b482f613cbc1}" /><Hide GUID="{0828783a-8ea6-4900-ba9e-463e5677873f}" /><Hide GUID="{68c1f51e-c274-430b-a137-79d4e591127c}" /><Hide GUID="{8891a609-f295-466d-91d5-d52ddbb704ba}" /><Hide GUID="{b1b975b0-dd1b-4ad7-bb44-83c4c4447f1d}" /><Hide GUID="{b3230ca5-6289-4f29-b44e-9d6190946314}" /><Hide GUID="{fd81c13f-ca59-44c8-9658-ca0a9452dc27}" /><Hide GUID="{a7c3e665-afbd-44d2-a7ba-39440c7cb1c4}" /><Hide GUID="{fd7153f5-d272-43ff-9eed-6f5d7bedd9c4}" /></Hides></DataType></DataTypes>
   <Groups>
     <Group SortOrder="701">
       <Name>C++</Name>
@@ -47,7 +47,18 @@
           <BaseType GUID="{8007ae3b-86bb-40f2-b385-ef87fcc239a4}">TcTraceLevel</BaseType>
           <PTCID>#x03002103</PTCID>
           <ContextId>1</ContextId>
-        </Parameter><Parameter OnlineParameter="true"><Name>Tolerance</Name><BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType><Default><Value>0.000001</Value></Default><Properties></Properties><PTCID>#x00000001</PTCID><ContextId>1</ContextId></Parameter>
+        </Parameter>
+        <Parameter OnlineParameter="true">
+          <Name>Tolerance</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType>
+          <Default>
+            <Value>0.000001</Value>
+          </Default>
+          <Properties>
+          </Properties>
+          <PTCID>#x00000001</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
       </Parameters>
       <DataAreas>
         <DataArea>
@@ -62,7 +73,42 @@
         <DataArea>
           <AreaNo AreaType="OutputSrc">1</AreaNo>
           <Name>Outputs</Name>
-          <ContextId>1</ContextId><Symbol><Name>MotionOutput</Name><SubItem><Name>time</Name><Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type></SubItem><SubItem><Name>pos</Name><Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type><ArrayInfo><LBound>0</LBound><Elements>3</Elements></ArrayInfo></SubItem><SubItem><Name>vel</Name><Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type><ArrayInfo><LBound>0</LBound><Elements>3</Elements></ArrayInfo></SubItem></Symbol><Symbol><Name>ExampleId</Name><BaseType GUID="{18071995-0000-0000-0000-00000000000b}">ULINT</BaseType></Symbol><Symbol><Name>SumDiff</Name><BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType></Symbol><Symbol><Name>EffectiveTolerance</Name><BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType></Symbol>
+          <ContextId>1</ContextId>
+          <Symbol>
+            <Name>MotionOutput</Name>
+            <SubItem>
+              <Name>time</Name>
+              <Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type>
+            </SubItem>
+            <SubItem>
+              <Name>pos</Name>
+              <Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type>
+              <ArrayInfo>
+                <LBound>0</LBound>
+                <Elements>3</Elements>
+              </ArrayInfo>
+            </SubItem>
+            <SubItem>
+              <Name>vel</Name>
+              <Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type>
+              <ArrayInfo>
+                <LBound>0</LBound>
+                <Elements>3</Elements>
+              </ArrayInfo>
+            </SubItem>
+          </Symbol>
+          <Symbol>
+            <Name>ExampleId</Name>
+            <BaseType GUID="{18071995-0000-0000-0000-00000000000b}">ULINT</BaseType>
+          </Symbol>
+          <Symbol>
+            <Name>SumDiff</Name>
+            <BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType>
+          </Symbol>
+          <Symbol>
+            <Name>EffectiveTolerance</Name>
+            <BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType>
+          </Symbol>
         </DataArea>
       </DataAreas>
       <InterfacePointers>
@@ -73,6 +119,99 @@
         </InterfacePointer>
       </InterfacePointers>
       <DataPointers />
+      <Deployment />
+    </Module>
+    <Module GUID="{b26dd069-8b84-44ec-84ff-19158324ca1b}" Group="C++">
+      <Name>Interpolator1D</Name>
+      <CLSID ClassFactory="Example">{b26dd069-8b84-44ec-84ff-19158324ca1b}</CLSID>
+      <Licenses>
+        <License>
+          <LicenseId>{304D006A-8299-4560-AB79-438534B50288}</LicenseId>
+          <Comment>TC3 C++</Comment>
+        </License>
+      </Licenses>
+      <InitSequence>PSO</InitSequence>
+      <Contexts>
+        <Context>
+          <Id>1</Id>
+        </Context>
+      </Contexts>
+      <Interfaces>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+        </Interface>
+        <Interface>
+          <Type GUID="{03000010-0000-0000-E000-000000000064}">ITcCyclic</Type>
+        </Interface>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{03000012-0000-0000-E000-000000000064}">ITcADI</Type>
+        </Interface>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{03000018-0000-0000-E000-000000000064}">ITcWatchSource</Type>
+        </Interface>
+      </Interfaces>
+      <Parameters>
+        <Parameter HideParameter="true">
+          <Name>TraceLevelMax</Name>
+          <Comment>Controls the amount of log messages.</Comment>
+          <BaseType GUID="{8007ae3b-86bb-40f2-b385-ef87fcc239a4}">TcTraceLevel</BaseType>
+          <PTCID>#x03002103</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter>
+          <Name>Parameter</Name>
+          <SubItem>
+            <Name>max_velocity</Name>
+            <Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type>
+          </SubItem>
+          <SubItem>
+            <Name>max_acceleration</Name>
+            <Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type>
+          </SubItem>
+          <SubItem>
+            <Name>max_jerk</Name>
+            <Type GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</Type>
+          </SubItem>
+          <PTCID>#x00000001</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter><Parameter><Name>CycleTime</Name><Comment TxtId=""><![CDATA[Cycle time of task]]></Comment><BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType><PTCID>#x03002080</PTCID><ContextId>1</ContextId></Parameter>
+      </Parameters>
+      <DataAreas>
+        <DataArea>
+          <AreaNo AreaType="InputDst">0</AreaNo>
+          <Name>Inputs</Name>
+          <ContextId>1</ContextId>
+          <Symbol>
+            <Name>InitialPosition</Name><DisplayName TxtId="" /><Comment TxtId="" />
+            <BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType><Unit><![CDATA[mm]]></Unit>
+          </Symbol>
+          <Symbol>
+            <Name>InitialVelocity</Name><Comment TxtId="" />
+            <BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType><Unit><![CDATA[mm/ms]]></Unit>
+          </Symbol>
+        </DataArea>
+        <DataArea>
+          <AreaNo AreaType="OutputSrc">1</AreaNo>
+          <Name>Outputs</Name>
+          <ContextId>1</ContextId>
+          <Symbol>
+            <Name>PositionControlState</Name>
+            <BaseType GUID="{8c991c59-73e7-4fe2-b3d2-9bb7e5cb841d}">State</BaseType>
+          </Symbol>
+          <Symbol>
+            <Name>VelocityControlState</Name>
+            <BaseType GUID="{8c991c59-73e7-4fe2-b3d2-9bb7e5cb841d}">State</BaseType>
+          </Symbol>
+        </DataArea>
+      </DataAreas>
+      <InterfacePointers>
+        <InterfacePointer>
+          <PTCID>#x03002060</PTCID>
+          <Name>CyclicCaller</Name>
+          <Type GUID="{0300001e-0000-0000-e000-000000000064}">ITcCyclicCaller</Type>
+        </InterfacePointer><InterfacePointer><PTCID>#x00000002</PTCID><Name>Task</Name><Type GUID="{02000002-0000-0000-e000-000000000064}">ITcTask</Type><ContextId>1</ContextId></InterfacePointer>
+      </InterfacePointers>
+      <DataPointers ></DataPointers>
       <Deployment />
     </Module>
   </Modules>

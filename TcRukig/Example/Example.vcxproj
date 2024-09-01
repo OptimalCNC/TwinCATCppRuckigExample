@@ -47,6 +47,7 @@
     <ClInclude Include="eg01.h" />
     <ClInclude Include="eg05.h" />
     <ClInclude Include="Example.h" />
+    <ClInclude Include="Interpolator1D.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ruckigExamples.h" />
     <ClInclude Include="TcPch.h" />
@@ -58,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Example.cpp" />
+    <ClCompile Include="Interpolator1D.cpp" />
     <ClCompile Include="TcPch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|TwinCAT UM (x86)'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|TwinCAT RT (x86)'">Create</PrecompiledHeader>

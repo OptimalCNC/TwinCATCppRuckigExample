@@ -31,6 +31,8 @@ We will compile the `ruckig` library as a static library and use it in the TwinC
 There are still many template header files. You may instantiate them with your specific use case or defer the instantiation later to the precompiled header file in the TwinCAT3 C++ project.
 
 ## The Example Project
+
+### Module `Example`
 We present a simple example of using the above `ruckig.lib` in the TwinCAT3 versioned C++ project. For this, we will follow the steps below:
 
 1. Create a new TwinCAT3 versioned C++ project `Example` and add a C++ Module.
@@ -43,3 +45,19 @@ We present a simple example of using the above `ruckig.lib` in the TwinCAT3 vers
 8. Activate: you may change the "Inputs.ExampleId" and see the result in "Outputs.MotionOutput" in the TwinCAT3 XAE. Currently, we have migrated three examples from the original ruckig library:
     - `ExampleId = 1`: A position example.
     - `ExampleId = 5`: A velocity example.
+
+
+### Module `Interpolator1D`
+We also present a simple example of using the `PositionInterpolator` and `VelocityInterpolator` (see [interpolator.hh](./TcRukig/ruckig/extern/ruckig/include/interpolator1d/interpolator.hh)). 
+
+1. Create another C++ Module `Interpolator1D` in the Example project.
+2. We put configurations like  `max_velocity`, `max_acceleration`, `max_jerk` in the Parameter section. You may set them in the Parameter(init) section of Object Setting.
+    **Please be aware of the consistency of units of the parameters.**
+3. We initialize the interpolators with parameters in the transition `PREOP` to `SAFEOP`. Note that we also create a "Context-based" parameter `CycleTime` to set the cycle time of the interpolators.
+4. In the `CycleUpdate`, we use the interpolators to generate motion. The generated State is also placed in the `Outputs`.
+
+
+For demo purposes, we have the Inputs:
+- `InitialPosition`: The initial position for the PositionInterpolator.
+- `InitialVelocity`: The initial velocity for the VelocityInterpolator.
+The targets are all zero for the PositionInterpolator and zero velocity and acceleration for the VelocityInterpolator.
